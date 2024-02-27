@@ -5,6 +5,9 @@ const db = require('./config/db')
 const consign = require('consign')
 
 consign()
+    // Adcionado o passport na api
+    .include('./config/passport.js')
+    
     .then('./config/middlewares.js')
     // Para carregar todos os arquivos da pasta api, que são as funcões de persistencia, delete, update...
     .then('./api')
