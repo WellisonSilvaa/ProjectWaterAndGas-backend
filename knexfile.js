@@ -1,11 +1,13 @@
 
 module.exports = {
 
-  client: 'mysql',
+  client: 'mysql2',
   connection: {
-    database: 'projectwaterandgas',
+    host : 'roundhouse.proxy.rlwy.net',
+    port : 58761,
+    database: 'railway',
     user: 'root',
-    password: ''
+    password: 'Cc1H5BE644bdcDAaDFa625cBffg-2FAd'
   },
   pool: {
     min: 2,
