@@ -10,7 +10,7 @@ exports.up = function(knex) {
         table.integer('quantity').notNullable()
         table.string('product2')
         table.integer('quantity2')
-        table.dateTime('tableTime').notNullable()
+        table.dateTime('orderTime').notNullable()
         table.string('formPayment').notNullable()
         table.double('change').notNullable()
         table.string('creditOrDebit').notNullable()
@@ -19,8 +19,8 @@ exports.up = function(knex) {
         table.dateTime('doneAt')
         // Referencia ao ID da tabela USERS 
         // Referencia ao mysql
-        // table.integer('userId').unsigned()
-        // table.foreign('userId').references('users.id')
+        table.integer('userId').unsigned()
+        table.foreign('userId').references('users.id')
 
         // Referencia utilizando o postgresql
         // table.integer('userId').references('id').inTable('users').notNull()
