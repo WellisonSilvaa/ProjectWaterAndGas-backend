@@ -12,7 +12,7 @@ exports.up = function(knex) {
         table.integer('quantity2')
         table.dateTime('orderTime').notNullable()
         table.string('formPayment').notNullable()
-        table.double('change').notNullable()
+        table.decimal('change', 10, 2).notNullable()
         table.string('creditOrDebit').notNullable()
         table.string('customerAddress').notNullable()
         table.string('additionalInfo').notNullable()

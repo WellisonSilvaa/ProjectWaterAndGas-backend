@@ -8,7 +8,7 @@ module.exports = app => {
 
         app.db('orders')
             .where({ userId: req.user.id })
-            .oderBy('orderTime')
+            .orderBy('orderTime')
             .then(orders => res.json(orders))
             .catch(err => res.status(500).json(err))
     }
@@ -34,7 +34,7 @@ module.exports = app => {
                     res.status(400).send(msg)
                 }
             })
-            .catch(err => res.status(400)).json(err)
+            .catch(err => res.status(500).json(err));
     }
 
     const update = (req, res) => {
@@ -70,8 +70,8 @@ module.exports = app => {
 
     const toggleOrder = (req, res) => {
         app.db('orders')
-            where({ id: req.params.id, userId: req.user.id })
-            first()
+            .where({ id: req.params.id, userId: req.user.id })
+            .first()
             .then(order => {
                 if(!order) {
                     const msg = `Order com id ${req.params.id} não encontrada`;
