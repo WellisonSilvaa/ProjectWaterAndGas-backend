@@ -9,7 +9,7 @@ module.exports = app => {
         }
         // Aqui ele aguarda a verificação no banco de dados, pra depois ele continuar. //
         const user = await app.db('users')
-            .where({ email: req.body.email })
+            .whereRaw("LOWER(email) = LOWER(?)", req.body.email)
             .first()
 
         if(user) {
