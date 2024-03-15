@@ -13,6 +13,13 @@ module.exports = app => {
             .catch(err => res.status(500).json(err))
     }
 
+    const getOrder = (req, res) => {
+        app.db('orders')
+            .where({ id: req.params.id, userId: req.user.id })
+            .then(order => res.json(order))
+            .catch(err => res.status(500).json(err))
+    }
+
     const save = (req, res) => {
         req.body.userId = req.user.id;
 
@@ -88,6 +95,7 @@ module.exports = app => {
 
     return {
         getOrders,
+        getOrder,
         save,
         remove,
         update,
