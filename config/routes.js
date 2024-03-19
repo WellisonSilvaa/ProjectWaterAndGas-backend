@@ -14,6 +14,7 @@ module.exports = app => {
     app.route('/orders/:id')
         .all(app.config.passport.authenticate())
         .delete(app.api.order.remove)
+        .get(app.api.order.getOrder)
         .put(app.api.order.update)
 
     app.route('/orders/:id/toggle')
